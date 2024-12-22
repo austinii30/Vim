@@ -1,0 +1,121 @@
+#####################################################################
+# Purpose: Record new learned vim skills.
+# Author : Austin Liu
+# Date   : 2024/10/16
+#####################################################################
+
+#####################################################################
+Command Count Motion
+#####################################################################
+
+
+w: move to the beginning of the next word (moves to the beginning of the next line)
+b: move to the beginning of the prev. word
+e: move to the end of the next word
+ge: move to the end of the prev. word
+$: move to the end of a line
+0, ^: move to the beginning of a line
+f+_CHAR_: move to the next CHAR in the line (';'repeat the action forward, ',' repeats backward)
+F+_CHAR_: move to the prev. CHAR in the line
+t+_CHAR_: move to the prev. character of the next CHAR in the line
+T+_CHAR_: move to the prev. character of the prev. CHAR in the line
+%: moves to the corresponding parethesis ('()', '[]', '{}' are all included) or go to the next one if not on one
+:_N_, _N_G: move to the Nth line
+_N_+%: move to the N% of the document
+H/M/L: move to the top/middle/bottom line that you can see now
+
+:noh: no highlight
+
+_N_dd: delete (N-1) lines below (including the current line)
+D: delete till the end of line
+d+_N_+j: delete N lines below (including the current line)
+d+_N_+k: delete N lines above (including the current line)
+db: delete until the current word (excluding the selected character and the prev. space)
+dw: delete the rest of the word (including the spaces following it)
+_N_+j: move N lines below
+_N_+k: move N lines above
+
+yy: copy the current line
+
+<Ctrl>+r: redo the last move
+
+:%s/_WORD1_/_WORD2_/: substitude the first word 2 for word 1
+:%s/_WORD1_/_WORD2_/g: substitude all word 2 for word 1
+:%s/_WORD1_/_WORD2_/gc: substitude all, but ask for conformation before substituding word 2 for word 1
+    y: yes, move to the next word 1
+    n: no, move to the next word 1
+    a: substitude all
+    q: quit searching
+    l: quit searching after substituding this word 1
+
+/+_WORD_+'Enter': search a given word forward (.*[]^%/\?~$ are escape characters, must add '\' before them)
+    n: move to the next searched result
+    N: move to the prev. searched result
+    ? searches a given word backward
+    :set ignorecase: ignore cases
+    :set noignorecase: don't ignore cases
+<Up>/<Down>: command history (for both ':' and '/')
+
+<Ctrl>+G: show the information of the editing document (line amount, position of the current cursor)
+  (if ruler is off, it also shows the cursor position and the % of the document)
+:set (no)number: (don't) show line numbers
+:set (no)ruler: (don't) show the current line, character and % of the file in the right bottom corner
+<Ctrl>+U/B/E: scroll the screen up for half page/full page/one line
+<Ctrl>+D/F/Y: scroll the screen down for half page/full page/one line
+zz/zt/zb: scroll the screen so the crusor is at the middle/top/bottom of the screen
+
+J: combine two lines together
+ZZ: save and leave the file
+_N_+a/i+_CHAR_+<ESC>: type CHAR by a/i mode for N times
+:e: start a new file to edit
+
+<Ctrl>+<]>/o: enter/jump back from the hyperlink in vim help
+
+'vim filename" edit a file by vim in the same command window
+'gvim finlename" open another vim window to edit a file
+
+
+#####################################################################
+# Practice Below ####################################################
+#####################################################################
+############################
+# naiveBayes for iris data #
+############################
+
+library(e1071)
+# input (x) can be categorical and numeric, output (y) must be categorical
+
+?naiveBayes
+summary(iris)
+testidx = which(1:length(iris[,1])%%5 == 0)
+testidx
+iristrain = iris[-testidx,]
+iristest = iris[testidx,]
+nb = naiveBayes(Species~., data=iristrain)
+pred = predict(nb, iristest[,-5])
+table(pred, iristest[,5])
+
+nb
+x1=iristrain[1:40,1]
+c(mean(x1),sqrt(var(x1)))  # agrees with results in `nb'
+
+
+###########################################
+# try naiveBayes for dataset1.csv         #
+# use V1 as output and the rest as input  #
+###########################################
+
+data = read.table("dataset1.csv", sep = ',')
+tmp = data
+tmp[,1] = as.factor(tmp[,1])
+
+acc = function(data1, data2){
+  return(mean(data1==data2))
+}
+
+
+
+
+
+
+
