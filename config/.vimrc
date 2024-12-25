@@ -1,8 +1,13 @@
+"':version' to check vim version, vimrc path, etc.
+
 set number     " line number
 set ruler      " cursor location at bottom right
 set hlsearch   " highlight search results
 set is hls     " highlight when typing to search
 set background=dark
+
+" Allow backspace in all modes 
+set backspace=indent,eol,start
 
 syntax on
 
@@ -54,8 +59,18 @@ let g:everforest_enable_italic = 1
 let g:everforest_cursor = 'red'
 " ----------------------------------------------------------------------------
 
-
-
-
-
 colorscheme everforest
+
+
+" Disable Ctrl+V   (does not work, use 'Ctrl+q' for blockwise search)
+"nnoremap <C-v> <Nop>
+"inoremap <C-v> <Nop>
+"vnoremap <C-v> <Nop>
+
+
+
+
+
+"':echo has("gui_running")' to see which vim is running:
+" > 1: guiVim, so guifont is supported
+" > 0: terminal-based vim, font settings are controled by terminal emulator
