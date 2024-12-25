@@ -9,5 +9,6 @@ Notes and configuration files for the Vim text editor.
 │   ├── .vimrc           # The vim setting file
 │   └── .vim             # The vim setting directory
 ├── .wip/                # Files/Directories that are still working-in-progress
-└── README.md            # Repository overview and instructions
+├── README.md            # Repository overview and instructions
+└── updateSystemConfig   # Run this shell script to update .vimrc and .vim
 ```
