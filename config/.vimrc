@@ -6,6 +6,13 @@ set background=dark
 
 syntax on
 
+" Set auto-indentation to 4 spaces
+set tabstop=4        " Set the width of a tab character to 4 spaces
+set shiftwidth=4     " Number of spaces to use for each step of (auto)indent
+set expandtab        " Use spaces instead of tabs for indentation
+set smartindent      " Enable smart indentation for new lines
+set autoindent       " Enable automatic indentation
+
 
 " ------------------------------ Cursor --------------------------------------
 " increase cursor reaction time 
